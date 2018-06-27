@@ -15,7 +15,7 @@ namespace Grades.Tests
 
             GradeStatistics result = book.ComputeStatistics();
 
-            Assert.Equal(90, result.HighestGrade); 
+            Assert.Equal(90, result.HighestGrade);
         }
 
         [Fact]
@@ -30,5 +30,16 @@ namespace Grades.Tests
             Assert.Equal(10, result.LowestGrade);
         }
 
+        [Fact]
+        public void ComputesAverageGrade()
+        {
+            GradeBook book = new GradeBook();
+            book.AddGrade(90);
+            book.AddGrade(10);
+
+            GradeStatistics result = book.ComputeStatistics();
+
+            Assert.Equal(50, result.AverageGrade);
+        }
     }
 }
