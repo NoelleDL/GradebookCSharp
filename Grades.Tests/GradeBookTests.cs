@@ -27,7 +27,8 @@ namespace Grades.Tests
 
             GradeStatistics result = book.ComputeStatistics();
 
-            Assert.Equal(10, result.LowestGrade); 
+            Assert.Equal(10, result.LowestGrade);
         }
+
     }
 }
