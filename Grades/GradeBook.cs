@@ -7,7 +7,8 @@ namespace Grades
     {
         public GradeBook()
         {
-            grades = new List<float>(); 
+            grades = new List<float>();
+           
         }
 
         public void AddGrade(float grade)

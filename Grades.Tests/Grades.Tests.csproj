@@ -16,4 +16,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Grades\Grades.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Types\EmptyClass.cs" />
+    <Compile Remove="Types\ReferenceTypeTests.cs" />
+  </ItemGroup>
 </Project>
