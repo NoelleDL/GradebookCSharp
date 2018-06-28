@@ -7,6 +7,7 @@ namespace Grades
     {
         public GradeBook()
         {
+            _name = "Noelle's Grade Book";
             grades = new List<float>();
            
         }
@@ -38,8 +39,33 @@ namespace Grades
             return stats; 
         }
 
-        public string Name; 
+        public string Name
+        {
+            get
+            {
+                return _name;
+            }
+            set
+            {
+                if (!String.IsNullOrEmpty(value))
+                {
 
+                    if (_name != value)
+                    {
+                        NameChangedEventArgs args = new NameChangedEventArgs();
+                        args.ExistingName = _name;
+                        args.NewName = value;
+
+                        NameChanged(this, args); 
+                    }
+
+                    value = _name; 
+                }
+                    
+            }
+        }
+        public event NameChangedDelegate NameChanged; 
+        private string _name; 
         private List<float> grades;
     }
 }
