@@ -16,11 +16,12 @@ namespace Grades
             GradeStatistics stats = book.ComputeStatistics();
             Console.WriteLine(book.Name); 
             WriteResult("Average", stats.AverageGrade);
-            WriteResult("Highest", (int)stats.HighestGrade);
+            WriteResult("Highest", stats.HighestGrade);
             WriteResult("Lowest", stats.LowestGrade);
+            WriteResult("Grade", stats.LetterGrade);
         }
 
-        static void WriteResult(string description, int result)
+        static void WriteResult(string description, string result)
         {
             Console.WriteLine($"{description}: {result}");
         }
