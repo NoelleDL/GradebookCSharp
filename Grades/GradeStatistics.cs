@@ -13,19 +13,19 @@ namespace Grades
             get
             {
                 string result;
-                if (AverageGrade >= 89.5)
+                if (Math.Round(AverageGrade) >= 90)
                 {
                     result = "A";
                 }
-                else if (AverageGrade >= 79.5)
+                else if (Math.Round(AverageGrade) >= 80)
                 {
                     result = "B";
                 }
-                else if (AverageGrade >= 69.5)
+                else if (Math.Round(AverageGrade) >= 70)
                 {
                     result = "C";
                 }
-                else if (AverageGrade >= 59.5)
+                else if (Math.Round(AverageGrade) >= 60)
                 {
                     result = "D";
                 }

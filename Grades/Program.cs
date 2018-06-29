@@ -11,7 +11,7 @@ namespace Grades
             book.Name = "Scott's Grade Book"; 
             book.AddGrade(91);
             book.AddGrade(89.5f);
-            book.AddGrade(79); 
+            book.AddGrade(57); 
 
             GradeStatistics stats = book.ComputeStatistics();
             Console.WriteLine(book.Name); 
