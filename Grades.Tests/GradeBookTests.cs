@@ -41,5 +41,18 @@ namespace Grades.Tests
 
             Assert.Equal(50, result.AverageGrade);
         }
+
+        [Fact]
+        public void ComputesLetterGrade()
+        {
+            GradeBook book = new GradeBook();
+            book.AddGrade(90);
+            book.AddGrade(80);
+
+            GradeStatistics result = book.ComputeStatistics();
+
+            Assert.Equal("B", result.LetterGrade); 
+
+        }
     }
 }
