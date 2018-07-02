@@ -7,13 +7,22 @@ namespace Grades
     {
         static void Main(string[] args)
         {
-            GradeBook book = new GradeBook();
+            GradeBook book = CreateGradeBook();
             GetBookName(book);
 
             book.NameChanged += OnNameChange;
             AddGrade(book);
             SaveGrades(book);
+            WriteResults(book);
+        }
 
+        private static GradeBook CreateGradeBook()
+        {
+            return new ThrowAway();
+        }
+
+        private static void WriteResults(GradeBook book)
+        {
             GradeStatistics stats = book.ComputeStatistics();
             Console.WriteLine(book.Name);
             WriteResult("Average", stats.AverageGrade);
