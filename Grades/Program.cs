@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO; 
 
 namespace Grades
 {
@@ -7,6 +8,37 @@ namespace Grades
         static void Main(string[] args)
         {
             GradeBook book = new GradeBook();
+            GetBookName(book);
+
+            book.NameChanged += OnNameChange;
+            AddGrade(book);
+            SaveGrades(book);
+
+            GradeStatistics stats = book.ComputeStatistics();
+            Console.WriteLine(book.Name);
+            WriteResult("Average", stats.AverageGrade);
+            WriteResult("Highest", stats.HighestGrade);
+            WriteResult("Lowest", stats.LowestGrade);
+            WriteResult("Grade", stats.LetterGrade);
+            WriteResult("Description", stats.Description);
+        }
+
+        private static void SaveGrades(GradeBook book)
+        {
+            StreamWriter outputFile = File.CreateText("grades.txt");
+            book.WriteGrades(outputFile);
+            outputFile.Close();
+        }
+
+        private static void AddGrade(GradeBook book)
+        {
+            book.AddGrade(91);
+            book.AddGrade(89.5f);
+            book.AddGrade(58);
+        }
+
+        private static void GetBookName(GradeBook book)
+        {
             try
             {
                 Console.WriteLine("Please enter a name: ");
@@ -14,23 +46,8 @@ namespace Grades
             }
             catch (ArgumentException ex)
             {
-                Console.WriteLine(ex.Message); 
+                Console.WriteLine(ex.Message);
             }
-
-
-            book.NameChanged += OnNameChange; 
-            book.AddGrade(91);
-            book.AddGrade(89.5f);
-            book.AddGrade(58);
-            book.WriteGrades(Console.Out); 
-
-            GradeStatistics stats = book.ComputeStatistics();
-            Console.WriteLine(book.Name); 
-            WriteResult("Average", stats.AverageGrade);
-            WriteResult("Highest", stats.HighestGrade);
-            WriteResult("Lowest", stats.LowestGrade);
-            WriteResult("Grade", stats.LetterGrade);
-            WriteResult("Description", stats.Description);
         }
 
         static void WriteResult(string description, string result)
