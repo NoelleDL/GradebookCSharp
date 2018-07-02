@@ -7,11 +7,22 @@ namespace Grades
         static void Main(string[] args)
         {
             GradeBook book = new GradeBook();
+            try
+            {
+                Console.WriteLine("Please enter a name: ");
+                book.Name = Console.ReadLine();
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message); 
+            }
+
+
             book.NameChanged += OnNameChange; 
-            book.Name = "Scott's Grade Book"; 
             book.AddGrade(91);
             book.AddGrade(89.5f);
-            book.AddGrade(58); 
+            book.AddGrade(58);
+            book.WriteGrades(Console.Out); 
 
             GradeStatistics stats = book.ComputeStatistics();
             Console.WriteLine(book.Name); 
